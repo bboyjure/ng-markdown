@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ng-markdown-lib": {
+      "projectType": "library",
+      "root": "projects/ng-markdown-lib",
+      "sourceRoot": "projects/ng-markdown-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-markdown-lib/tsconfig.lib.json",
+            "project": "projects/ng-markdown-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-markdown-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-markdown-lib/src/test.ts",
+            "tsConfig": "projects/ng-markdown-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-markdown-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-markdown-lib/tsconfig.lib.json",
+              "projects/ng-markdown-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-markdown-lib"
 }
